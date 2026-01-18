@@ -3,6 +3,8 @@ package mojasala.model.zakup;
 import java.time.LocalDateTime;
 
 import mojasala.database.CsvSerializable;
+import java.util.List;
+import mojasala.model.usluga.Usluga;
 
 public class Zakup implements CsvSerializable {
 	
@@ -11,16 +13,29 @@ public class Zakup implements CsvSerializable {
 	private LocalDateTime pocetakZakupa;
 	private LocalDateTime krajZakupa;
 	private double cena;
+	private List<Usluga> usluge;
 	
 	
+	//konstruktor za CSV koji nema usluge
+	public Zakup(String nazivSale, String usernameZakupca, LocalDateTime pocetakZakupa, LocalDateTime krajZakupa, double cena) {
+		this.nazivSale = nazivSale;
+		this.usernameZakupca = usernameZakupca;
+		this.pocetakZakupa = pocetakZakupa;
+		this.krajZakupa = krajZakupa;
+		this.cena = cena;
+		this.usluge = List.of(); // list.of dodeljuje polju praznu nepromenljivu listu
+	}
+	
+	// konstruktor za runtime(sa uslugama)
 	public Zakup(String nazivSale, String usernameZakupca, LocalDateTime pocetakZakupa, LocalDateTime krajZakupa,
-			double cena) {
+			double cena, List<Usluga> usluge) {
 		super();
 		this.nazivSale = nazivSale;
 		this.usernameZakupca = usernameZakupca;
 		this.pocetakZakupa = pocetakZakupa;
 		this.krajZakupa = krajZakupa;
 		this.cena = cena;
+		this.usluge = usluge;
 	}
 
 	public String getNazivSale() {
@@ -44,6 +59,10 @@ public class Zakup implements CsvSerializable {
 
 	public double getCena() {
 		return cena;
+	}
+	
+	public List<Usluga> getUsluge(){
+		return usluge;
 	}
 	
 	

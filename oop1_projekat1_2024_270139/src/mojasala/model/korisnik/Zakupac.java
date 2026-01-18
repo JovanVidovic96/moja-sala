@@ -34,6 +34,11 @@ public class Zakupac extends Korisnik implements CsvSerializable {
 		return sredstva;
 	}
 	
+	
+	public void setSredstva(double sredstva) {
+		this.sredstva = sredstva;
+	}
+
 	public void dodajSredstva(double iznos) {
 		if(iznos > 0) {
 			sredstva += iznos;

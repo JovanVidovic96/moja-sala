@@ -1,6 +1,7 @@
 package mojasala.service;
 
 import mojasala.model.korisnik.Korisnik;
+import mojasala.model.korisnik.Vlasnik;
 import mojasala.model.korisnik.Zakupac;
 import mojasala.repository.KorisnikRepository;
 
@@ -32,9 +33,26 @@ public class AuthService {
 			return false;
 		}
 		
-		Zakupac novi = new Zakupac(username, password, telefon, 0);
-		korisnikRepository.save(novi);
+		Zakupac z = new Zakupac(username, password, telefon, 0);
+		korisnikRepository.save(z);
 		return true;
+	}
+	
+	public boolean registerVlasnik(String username, String password) {
+		
+		if (korisnikRepository.findByUsername(username) != null) {return false;}
+		
+		Vlasnik v = new Vlasnik (username, password);
+		korisnikRepository.save(v);
+		return true;
+		
+	}
+	
+	public void addFunds(Zakupac zakupac, double iznos) {
+		if (iznos <= 0) {return;}
+		
+		zakupac.setSredstva(zakupac.getSredstva() + iznos);
+		korisnikRepository.update(zakupac);
 	}
 
 }

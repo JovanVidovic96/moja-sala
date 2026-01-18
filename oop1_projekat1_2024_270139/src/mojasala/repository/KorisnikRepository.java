@@ -39,5 +39,24 @@ public class KorisnikRepository extends CsvRepository<Korisnik> {
 		lines.add(korisnik.toCsv());
 		writeLines(lines);
 	}
+	
+	
+	public void update (Korisnik updated) {
+		List<Korisnik> korisnici = findAll();
+		List<String> lines = new ArrayList<>();
+		
+		for (Korisnik k : korisnici) {
+			if(k.getUsername().equals(updated.getUsername())) {
+				lines.add(updated.toCsv()); //zamenjuje staru verziju korisnika sa updateovanom
+			} else {
+				lines.add(k.toCsv());
+			}
+		}
+		writeLines(lines);
+	}
+	
+	
+	
+	
 
 }
