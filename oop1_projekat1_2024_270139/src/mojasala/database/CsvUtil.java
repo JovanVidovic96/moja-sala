@@ -6,6 +6,18 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*
+ * CsvUtil je pomoćna (utility) klasa zadužena za rad sa CSV fajlovima.
+ * 
+ * Ova klasa omogućava:
+ * - čitanje svih linija iz CSV fajla
+ * - upis liste linija u CSV fajl
+ * 
+ * Klasa je statička po nameni (nema stanje), i koristi se unutar
+ * CSV repozitorijuma za rad sa fajl sistemom.
+ */
+
 public class CsvUtil {
 	public static List<String> read(String path){
 		try {

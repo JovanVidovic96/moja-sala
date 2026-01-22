@@ -28,4 +28,6 @@ public class ZakupRepository extends CsvRepository<Zakup>{
 		lines.add(zakup.toCsv());
 		writeLines(lines);
 	}
+	
+	
 }

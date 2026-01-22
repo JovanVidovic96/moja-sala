@@ -91,6 +91,12 @@ public class Sala implements Stanje, CsvSerializable {
 		this.rasveta = rasveta;
 	}
 	
-	
+	@Override
+	public String toString() {
+	    return "Sala: " + naziv +
+	           ", kapacitet: " + kapacitet +
+	           ", klimatizacija: " + (klimatizovana ? "da" : "ne") +
+	           ", rasveta: " + (rasveta ? "da" : "ne");
+	}
 
 }

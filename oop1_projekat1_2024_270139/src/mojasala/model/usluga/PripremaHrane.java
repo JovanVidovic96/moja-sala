@@ -21,5 +21,17 @@ public class PripremaHrane extends Usluga {
 		case DEZERT -> 500;
 		};
 	}
-
+	
+	public VrstaHrane getVrstaHrane() {
+		return vrsta;
+	}
+	
+	@Override
+	public String toCsv() {
+		return "HRANA:" +vrsta.name();
+	}
+	
+	public static PripremaHrane fromCsv(String s) {
+		return new PripremaHrane(VrstaHrane.valueOf(s));
+	}
 }

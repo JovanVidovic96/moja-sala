@@ -2,7 +2,21 @@ package mojasala.model.korisnik;
 
 import mojasala.database.CsvSerializable;
 
+
+
+/*
+ * Klasa Zakupac predstavlja korisnika sistema koji iznajmljuje sale.
+ * 
+ * Zakupac nasleđuje apstraktnu klasu Korisnik i poseduje dodatne podatke
+ * kao što su broj telefona i raspoloživa sredstva.
+ * Implementira CsvSerializable kako bi se njegovi podaci mogli trajno
+ * čuvati u CSV fajlu.
+ */
+
+
+
 public class Zakupac extends Korisnik implements CsvSerializable {
+	//telefon je String tip zbog mogucnosti da broj pocne sa 0 ili +381
 	private String telefon;
 	private double sredstva;
 	
